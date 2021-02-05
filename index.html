@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de E-mail</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <form action="" id="form">
+        <div class="input-box">
+            <input type="text" name="email" id="email" onkeydown="validationEmail()" placeholder="Entre com seu melhor e-mail">
+            <span id="text"></span>
+        </div>
+    </form>
+
+    <script>
+        function validationEmail(){
+            const form = document.getElementById('form')
+            const email = document.getElementById('email').value
+            const text = document.getElementById('text')
+            const pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+            
+            if (email.match(pattern)) {
+                form.classList.add("valid")
+                form.classList.remove('invalid')
+                text.innerHTML = "Seu E-mail e válido"
+                text.style.color = "#00ff00"
+                
+            } else {
+                form.classList.remove("valid")
+                form.classList.add('invalid') 
+                text.innerHTML = "Seu E-mail e inválido"
+                text.style.color = "#ff0000"
+            }
+
+
+            if (email == "") {
+                form.classList.add("valid")
+                form.classList.remove('invalid')
+                text.innerHTML = ""
+                text.style.color = "#00ff00"
+                
+            }
+        }
+    </script>
+</body>
+</html>
